@@ -1,0 +1,67 @@
+
+
+
+
+<div id="app1">
+<h1>{{message}}</h1>
+</div>
+
+
+<div id="app2">
+    数据：{{count}}
+    <button id="add" @click='add' >+</button>
+    <button id="minus" @click='minus' >-</button>
+</div>
+   
+<div id="app3">
+<ul>
+    <li v-for=" item in list ">
+        {{item}}
+    </li>
+</ul>
+</div>
+
+
+<script src="../js/vue.js"></script>
+
+
+<script>
+
+let app=new Vue({ 
+    el:'#app1',
+    data:{
+        message:"hello",
+    }}
+);
+
+let app2=new Vue({
+    el:'#app2',
+    data:{
+        count:0
+    },
+    methods:{
+        add:function(){
+            this.count++
+        },
+        minus:function(){
+            if(this.count>0){
+                this.count--
+            }else{
+                alert("count 不能小于0");
+            }
+            
+        }
+
+    }
+});
+
+
+let app3=new Vue({
+el:'#app3',
+data:{
+    list:['a','b','c','d']
+}
+
+});
+
+</script>
