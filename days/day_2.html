@@ -1,0 +1,88 @@
+<style>
+    .title {
+        font-size: 30px;
+        color: red;
+        background-color: gray;
+    }
+
+    .title2 {
+        font-size: 30px;
+        color: yellow;
+        background-color: blue;
+    }
+</style>
+
+<body>
+    <div id="app1">
+        <h3 :style="{fontSize:'10px',color:'white',backgroundColor:'red'}">{{message}}</h3>
+        <ul>
+            <li :class="{title:true,title2:false}" v-for='(m,index) in list'>{{index}}-{{m}}</li>
+        </ul>
+        <ul>
+            <li :class="{title:loading(m,index)}" v-for='(m,index) in list'>{{index}}-{{m}}</li>
+        </ul>
+
+        <h2 :class="{title2:titleIS}">{{message}}</h2>
+
+        <button @click='clickBtn'>按钮</button>
+        <a :href='aurl'>baiduyixia</a>
+        <a href="http://www.baidu.com">百度一下</a>
+        <a :href="aurl">百度一下</a>
+
+        <h2>总钱数{{money}}</h2>
+    </div>
+
+
+
+</body>
+<script src="../js/vue.js"></script>
+
+<script>
+    let app = new Vue({
+        el: app1,
+        data: {
+            message: "happy new year",
+            list: ["default", 'first', 'second', 'third'],
+            aurl: 'http://www.baidu.com',
+            titleIS: true,
+            title2Is: false,
+            books: [{
+                money: 10
+            }, {
+                money: 20
+            }, {
+                money: 30
+            }]
+        },
+        methods: {
+            getClasses: function () {
+                return "{title:true,title2:false}";
+            },
+            clickBtn: function () {
+                this.titleIS = !this.titleIS;
+            },
+            loading: function (m, index) {
+                console.log(index);
+                if (index == 0) {
+
+                    return this.titleIS;
+                } else {
+
+                    return this.titleIS;
+                }
+            }
+
+        },
+        computed: {
+            money: function () {
+                let result = 0;
+                for (let i = 0; i < this.books.length; i++) {
+                    result += this.books[i].money;
+                }
+                return result;
+            }
+        }
+
+
+    });
+</script>
