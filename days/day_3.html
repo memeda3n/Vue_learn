@@ -1,0 +1,95 @@
+<style>
+    back {
+        color: aqua;
+        font-weight: 600;
+    }
+</style>
+
+
+<div id="app2">
+    <span v-if="isTrue">
+        <label for="a">用户账号：</label><input id="a" placeholder="用户账号" key='account' />
+    </span>
+    <span v-else>
+        <label for="b">用户邮箱：</label><input id="b" placeholder="用户邮箱" key='email'/>
+    </span>
+
+    <button @click="isTrue=!isTrue">按钮</button>
+    <!-- <h1 v-if='isTrue'>ddd</h1> -->
+
+    <span v-show='isTrue'>v-show</span>
+</div>
+
+<div id="app">
+    {{name}}
+
+    <!-- <ul>
+        <li v-for='(o,index) in list'>{{index}}-{{o.name}} </li>
+
+    </ul> -->
+    <h2>{{comPush}} </h2>
+    <button @click='pushList'>methods按钮</button>
+    <button @click='reverse'>反转文字</button>
+
+</div>
+
+
+
+<script src="../js/vue.js"></script>
+
+
+<script>
+    const app2 = new Vue({
+        el: "#app2",
+        data: {
+            isTrue:false
+        }
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+    const app = new Vue({
+        el: '#app',
+        data: {
+            name: "sam",
+            list: [{
+                id: 1,
+                name: 'jim'
+            }]
+        },
+        methods: {
+            pushList() {
+                // let tom = {
+                //     id: 100,
+                //     name: 'Tom'
+                // };
+                // this.list.push(tom);
+                // console.log(this.list);
+                this.list.push({
+                    id: 100,
+                    name: 'Tom'
+                });
+            },
+            reverse() {
+                this.name = this.name.split("").reverse().join("");
+                console.log(this.name);
+            }
+
+        },
+        computed: {
+            comPush() {
+                return this.list.length;
+            }
+        }
+    });
+</script>
