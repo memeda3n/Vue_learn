@@ -11,13 +11,24 @@
         <label for="a">用户账号：</label><input id="a" placeholder="用户账号" key='account' />
     </span>
     <span v-else>
-        <label for="b">用户邮箱：</label><input id="b" placeholder="用户邮箱" key='email'/>
+        <label for="b">用户邮箱：</label><input id="b" placeholder="用户邮箱" key='email' />
     </span>
 
     <button @click="isTrue=!isTrue">按钮</button>
     <!-- <h1 v-if='isTrue'>ddd</h1> -->
 
     <span v-show='isTrue'>v-show</span>
+
+    <div>
+        <ul>
+            <li v-for='(value,key,index) in object'>
+                {{value}} {{key}}  {{index}}
+            </li>
+
+        </ul>
+
+    </div>
+
 </div>
 
 <div id="app">
@@ -42,7 +53,12 @@
     const app2 = new Vue({
         el: "#app2",
         data: {
-            isTrue:false
+            isTrue: false,
+            object: {
+                name: 'bill',
+                age: 30
+            }
+
         }
     });
 
