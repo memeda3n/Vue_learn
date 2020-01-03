@@ -1,0 +1,49 @@
+
+<style>
+    .active{
+        color: red;
+    }
+
+</style>
+
+
+<div id="app1">
+
+    <ul>
+        <li 
+        v-for='(item,index) in moves'
+        :class='{active:index==currentIndex}'
+        @click='btClick(index)'
+        >{{index}} {{item}} </li>
+    </ul>
+
+
+</div>
+
+
+
+
+
+<script src="../js/vue.js"></script>
+
+
+<script>
+
+const app1=new Vue({
+    el:"#app1",
+    data:{
+        moves:['大圣取经','神雕侠侣','功夫','厨神'],
+        currentIndex:0
+    },
+    methods: {
+        btClick(index){
+            this.currentIndex=index
+        }
+    },
+});
+
+
+
+
+</script>
+    
