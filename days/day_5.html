@@ -1,0 +1,95 @@
+<div id="app1">
+
+    <input v-model.lazy='message'>{{message}}
+
+</div>
+
+
+<div id="app2">
+    {{count}}
+</div>
+
+<div id="app3">
+    <div>
+        {{message}}
+    </div>
+    <input type="radio" value="女" name="gender" v-model='message'>女
+    <input type="radio" value="男" name="gender" v-model='message'>男
+</div>
+
+<div id="app4">
+
+    <!-- <input type="checkbox" value="a1" name="input1" v-model='array'>a1
+    <input type="checkbox" value="a2" name="input1" v-model='array'>a2
+    <input type="checkbox" value="a3" name="input1" v-model='array'>a3
+    <input type="checkbox" value="a4" name="input1" v-model='array'>a4
+    <input type="checkbox" value="a5" name="input1" v-model='array'>a5 -->
+
+<label v-for='o in strs' :for="o" >
+    <input type="checkbox" :id="o" :value="o" name="input1" v-model='array'>{{o}}
+</label>
+
+
+    {{array}}
+</div>
+
+<div id="app5">
+    <select name='a'   v-model='array' multiple>
+        <option value='a1'>a1</option>
+        <option value='b1'>b1</option>
+        <option value='c1'>c1</option>
+        <option value='d1'>d1</option>
+
+    </select>
+
+    {{array}}
+</div>
+
+
+<script src="../js/vue.js"></script>
+<script>
+    //高阶函数
+    const app2 = new Vue({
+        el: "#app2",
+        data: {
+            nums: [232, 122, 3433, 2134, 21, 32]
+        },
+        computed: {
+            count() {
+                return this.nums.filter(o => o < 1000).map(o => o * 2).reduce((pre, n) => pre + n)
+            }
+        },
+    });
+
+    //v-model
+    const app1 = new Vue({
+        el: "#app1",
+        data: {
+            message: '你好'
+        }
+    });
+    const app3 = new Vue({
+        el: "#app3",
+        data: {
+            message: 'a'
+        }
+    });
+
+
+    const app4 = new Vue({
+        el: '#app4',
+        data: {
+            strs:['a1','s2','d3','f4'],
+            array: []
+        }
+    });
+
+const app5 =new Vue({
+    el:'#app5',
+    data:{
+        array:[]
+    }
+})
+
+
+</script>
