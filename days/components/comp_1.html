@@ -1,0 +1,79 @@
+<div id="app">
+    {{message}}
+    <comp1 :mess='message' @subclick='changeMoney' :smoney='money'></comp1>
+   
+
+    -----------------
+    <div>
+        钱数：{{money}}
+        <button @click='increase'>+</button>
+    </div>
+</div>
+
+
+
+<template id='comp1'>
+    <div>
+        {{age}}
+        {{mess}}
+
+        <button @click='subClick'>子按钮+</button>
+        钱数：{{smoney}}
+    </div>
+</template>
+
+
+
+<script src="../../js/vue.js"></script>
+
+
+<script>
+    Vue.component("comp1", {
+        template: "#comp1",
+        data() {
+            return {
+                age: 13,
+                money:this.smoney
+            }
+        },
+        props: {
+            mess:String,
+            smoney:Number
+        },
+        methods: {
+            subClick(item) {
+                this.money=this.smoney;
+                this.money++;
+                this.$emit('subclick', this.money)
+            }
+        },
+    });
+
+
+
+
+    let app = new Vue({
+        el: '#app',
+        data: {
+            message: "dfdsf",
+            vAge: 0,
+            money:100
+        },
+        methods: {
+           
+            changeMoney(item) {
+                this.money = item;
+                console.log(item);
+            },
+            increase(){
+                this.money++;
+                console.log(this.money);
+            }
+
+        },
+        components: {
+
+        }
+
+    });
+</script>
