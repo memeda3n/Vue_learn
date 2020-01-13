@@ -1,7 +1,13 @@
 <div id="app">
     {{message}}
-    <comp1 :mess='message' @subclick='changeMoney' :smoney='money'></comp1>
-   
+    <comp1 :mess='message' @subclick='changeMoney' :smoney='money'>
+
+        <span slot="a">fdfsdf</span>
+        <span slot="b">1222222</span>
+        <span slot="c">ccccc</span>
+
+    </comp1>
+
 
     -----------------
     <div>
@@ -19,7 +25,17 @@
 
         <button @click='subClick'>子按钮+</button>
         钱数：{{smoney}}
+        <div>
+            <slot name='a'><button>默认</button></slot>
+            <slot name='b'><button>默认</button></slot>
+            <slot name='c'><button>默认</button></slot>
+        </div>
+
     </div>
+    </div>
+    </div>
+</template>
+</template>
 </template>
 
 
@@ -33,16 +49,16 @@
         data() {
             return {
                 age: 13,
-                money:this.smoney
+                money: this.smoney
             }
         },
         props: {
-            mess:String,
-            smoney:Number
+            mess: String,
+            smoney: Number
         },
         methods: {
             subClick(item) {
-                this.money=this.smoney;
+                this.money = this.smoney;
                 this.money++;
                 this.$emit('subclick', this.money)
             }
@@ -57,15 +73,15 @@
         data: {
             message: "dfdsf",
             vAge: 0,
-            money:100
+            money: 100
         },
         methods: {
-           
+
             changeMoney(item) {
                 this.money = item;
                 console.log(item);
             },
-            increase(){
+            increase() {
                 this.money++;
                 console.log(this.money);
             }
