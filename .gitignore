@@ -1,2 +1,4 @@
 module/
 *.txt
+days/webpack2/node_modules/
+days/webpack/node_modules/
